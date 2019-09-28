@@ -1,0 +1,44 @@
+name: 'create-deployment'
+description: 'An action to create a deployment'
+author: 'Bas Peters'
+inputs:
+  repo_token:
+    description: 'The GITHUB_TOKEN secret'
+    required: true
+  ref:        
+    description: 'The ref to deploy'
+    required: true
+  task:
+    description: 'Specifies a task to execute'
+    required: false
+    default: 'deploy'
+  auto_merge:
+    description: 'Attempts to automatically merge the default branch into the requested ref, if it is behind the default branch'
+    required: false
+    default: 'true'
+  required_contexts:
+    description: 'The status contexts to verify against commit status checks'
+    required: false
+  payload:
+    description: 'JSON payload with extra information about the deployment'
+    required: false
+    default: ''
+  environment:
+    description: 'Name for the target deployment environment '
+    required: false
+    default: 'production'
+  description:
+    description: 'Short description of the deployment'
+    required: false
+    default: ''
+  transient_environment:
+    description: 'Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future'
+    required: false
+    default: 'false'
+  production_environment:
+    description: 'Specifies if the given environment is one that end-users directly interact with'
+    required: false
+    default: 'true'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
