@@ -39,6 +39,9 @@ inputs:
     description: 'Specifies if the given environment is one that end-users directly interact with'
     required: false
     default: 'true'
+outputs:
+  deployment_id:
+    description: 'The deployment identifier'
 runs:
   using: 'node12'
   main: 'dist/index.js'
